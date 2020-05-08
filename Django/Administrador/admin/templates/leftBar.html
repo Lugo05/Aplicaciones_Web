@@ -1,0 +1,171 @@
+{% load static %}
+<!-- partial:partials/_sidebar.html -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="text-wrapper">
+            <p class="profile-name">{{hello}} {{request.session.username}}</p>
+            <div>
+              <small class="designation text-muted">{{request.session.job}}</small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_modules" aria-expanded="false" aria-controls="div_submenu_modules">
+        <i class="menu-icon fa fa-home"></i>
+        <span class="menu-title">{{module}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_modules" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/index/">{{modules}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/forms/">{{forms}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/section/">{{sections}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_inputs" aria-expanded="false" aria-controls="div_submenu_inputs">
+        <i class="menu-icon fa fa-pencil-square-o"></i>
+        <span class="menu-title">{{input}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_inputs" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/input/">{{inputs}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/inputType/">{{types_of_inputs}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/inputOption/">{{input_options}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/file/">{{files}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/fileType/">{{type_of_file}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_objects" aria-expanded="false" aria-controls="div_submenu_objects">
+        <i class="menu-icon mdi mdi-content-copy"></i>
+        <span class="menu-title">{{object}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_objects" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/object/">{{objects}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/objectProperty/">{{object_properties}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/objectType/">{{object_types}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/objectPropertyType/">{{types_object_property}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dataType/">{{data_types}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_users" aria-expanded="false" aria-controls="div_submenu_users">
+        <i class="menu-icon fa fa-user"></i>
+        <span class="menu-title">{{users}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_users" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/users/">{{users}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/hierarchy/">{{hierarchy}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/roles/">{{roles}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/job/">{{job}}</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link" href="/groups/">{{groups}}</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/permission/">{{permissions}}</a>
+        </li>-->
+        </ul>
+      </div>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_devices" aria-expanded="false" aria-controls="div_submenu_devices">
+        <i class="menu-icon fa fa-tablet"></i>
+        <span class="menu-title">{{device}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_devices" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/device/">{{devices}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/deviceType/">{{device_types}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#div_submenu_interest_site" aria-expanded="false" aria-controls="div_submenu_interest_site">
+        <i class="menu-icon fa fa-map-marker"></i>
+        <span class="menu-title">{{interest_site}}</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="div_submenu_interest_site" style="visibility:visible;">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="/interestSite/">{{interest_sites}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/territory/">{{territories}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/polygon/">{{polygons}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/typePolygon/">{{types_of_polygons}}</a>
+          </li>
+
+          <!--<li class="nav-item">
+            <a class="nav-link" href="/divisionType/">{{division_types}}</a>
+        </li>-->
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+<!-- partial -->

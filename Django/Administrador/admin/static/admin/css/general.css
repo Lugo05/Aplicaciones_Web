@@ -1,0 +1,48 @@
+.header-main{
+    background-color: #3895df !important;
+    border: 0px solid transparent !important;
+}
+
+.main-panel
+{
+    margin: auto;
+}
+
+.informative-div{
+    text-align: center;
+    border-radius: 15px;
+    border: #ccc solid 3px;
+    padding: 20px;
+    height: 100%;
+}
+
+.welcome-home{
+    margin-bottom: 15px;
+}
+
+.informative-div > .title > p{
+    font-size: 30px;
+    color: #606060;
+}
+
+.informative-div > .text > p {
+    color: #606060;
+}
+
+.informative-div > img {
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: #ccc;
+}
+
+nav > div > ul > li > a {
+    font-size: 16px !important;
+}
+
+.logo {
+    width: 150px !important;
+    height: 60px !important;
+    max-width: 150px !important;
+}

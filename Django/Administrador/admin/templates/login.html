@@ -1,0 +1,27 @@
+{% load static %}
+<html ng-app="App">
+<head>
+<title>Administrador</title>
+<link rel="stylesheet" type="text/css" href="/static/login/css/login.css">
+
+</head>
+<body>
+<div class="login-page">
+  <div>
+  <img src='{% static "login/img/logo.png" %}' width="310px" class="logo"/>
+  <div class="form">
+    <form action="/" method="POST">{% csrf_token %}
+      <div class="login-form">
+        <input type="text" name="username" placeholder='Usuario' autocomplete="off"/>
+        <input type="password" name="password" placeholder='Contraseña' autocomplete="off"/>
+      <!--<button ng-click="login();">login</button>-->
+        <div class="btn-accesar">
+          <input type="submit" value=""></input>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</body>
+</html>
