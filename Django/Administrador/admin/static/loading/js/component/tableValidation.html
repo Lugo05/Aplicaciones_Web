@@ -1,0 +1,12 @@
+<table class='table'>
+    <thead>
+        <tr ng-class='$ctrl.class'>
+            <th ng-repeat = 'header in $ctrl.data.headers'> {{header}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr calss = 'row' ng-repeat = 'register in $ctrl.data.data'>
+            <td ng-repeat = '(key,value) in register'> {{value}} </td>
+        <tr>
+    </tbody>
+<table>

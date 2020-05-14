@@ -1,0 +1,39 @@
+{% load static%}
+<div ng-app="AppMassive" ng-controller="ControllerMassive as cm">
+    <div class="row">
+        <p>Seleccionar archivo</p>
+    </div>
+    <div class = "row">
+        <form method="POST"></form>
+            <div class="col-sm-4">
+                <input type="file" name="file" id="form_file" />
+            </div>
+            <div class="cols-sm-2">
+                <input type="button" value="Validar"/>
+            </div>
+            <div class="col-sm-2">
+                <input type="button" value="Cargar"/>
+            </div>
+        </form>
+    </div>
+    <div class = "otro" ng-hide="cm.formatError">
+        <div class="row">
+            <div class="col-sm-12"><h4>Registros validos</h4></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table-validation type="correct"></table-validation>
+            </div>
+        </div>
+    </div>
+    <div class = "otro" ng-hide="cm.formatError">
+        <div class="row">
+            <div class="col-sm-12"><h4>Registros erroneos</h4></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table-validation type="invalid"></table-validation>
+            </div>
+        </div>
+    </div>
+</div>

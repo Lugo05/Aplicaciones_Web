@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login'
+    'rest_framework',
+    'login',
+    'loading'
 ]
 
 MIDDLEWARE = [
@@ -129,7 +131,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     # ...
     ("login", os.path.join(BASE_DIR, "static/login") ),
-    ('admin', os.path.join(BASE_DIR, "static/admin"))
+    ('admin', os.path.join(BASE_DIR, "static/admin")),
+    ('loading', os.path.join(BASE_DIR, "static/loading"))
 ]
 
 #Auth

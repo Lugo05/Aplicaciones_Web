@@ -29,7 +29,7 @@ def index(request):
                     data["session"]["profile"] = user_view.profile
                     data["session"]["permissions"] = user_view.permission
                     login(request,user)
-                    data["section"] = 'home.html'
+                    data["section"] = 'home'
                     page = "index.html"
         except:
             traceback.print_exception(*sys.exc_info())
@@ -40,7 +40,7 @@ def index(request):
             data["session"]["username"] = user_view.username
             data["session"]["profile"] = user_view.profile
             data["session"]["permissions"] = user_view.permission
-            data["section"] = 'home.html'
+            data["section"] = 'home'
             page = "index.html"
 
     return render(request, page ,data)
