@@ -1,0 +1,14 @@
+.row-massive {
+    margin-bottom: 50px;
+}
+
+.row-massive > .row-table > .scrollable
+{
+    min-height: 150px;
+    max-height: 500px;
+}
+
+.scrollable
+{
+    overflow: auto;
+}

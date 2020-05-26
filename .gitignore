@@ -1,1 +1,3 @@
 Django/Administrador/venv
+Django/Administrador/admin/static/files/archivo.xlsx
+*.pyc

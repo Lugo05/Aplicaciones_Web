@@ -21,4 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^', include('login.urls')),
+    url(r'loading', include('loading.urls'))
 ]

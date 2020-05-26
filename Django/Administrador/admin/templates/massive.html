@@ -1,0 +1,28 @@
+{% load static%}
+{% verbatim %}
+<div ng-app="AppMassive" ng-controller="ControllerMassive as cm">
+    <div class="row">
+        <div class="col-sm-5">
+            <p>{{cm.fileName()}}</p>
+        </div>
+    </div>
+    <div class = "row row-massive">
+        <form method="POST"></form>
+            <div class="col-sm-4">
+                <div class="custom-file">
+                    <input type="file" name="file" id="form_file" class="custom-file-input" lang="es" on-change-file/>
+                    <label class="custom-file-label" for="form_file">Seleccionar Archivo</label>
+                </div>
+            </div>
+            <div class="cols-sm-2" ng-show="cm.fileLoaded() && cm.isEmptyCorrectData()">
+                <button type="button" ng-click="cm.validateFile()" class="btn btn-info"> Validar </button>
+            </div>
+            <div class="col-sm-2" ng-hide="cm.isEmptyCorrectData()">
+                <button type="button" class="btn btn-success" > Cargar </button>
+            </div>
+        </form>
+    </div>
+    <table-validation type="correct"></table-validation>
+    <table-validation type="invalid"></table-validation>
+</div>
+{% endverbatim %}
