@@ -1,12 +1,37 @@
-<table class='table'>
-    <thead>
-        <tr ng-class='$ctrl.class'>
-            <th ng-repeat = 'header in $ctrl.data.headers'> {{header}} </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr calss = 'row' ng-repeat = 'register in $ctrl.data.data'>
-            <td ng-repeat = '(key,value) in register'> {{value}} </td>
-        <tr>
-    </tbody>
-<table>
+<div class = "row-massive" ng-show="$ctrl.visible()">
+    <div class="row">
+        <div class="col-sm-12"><h4>{{$ctrl.title}}</h4></div>
+    </div>
+    <div class="row row-table">
+        <div class="col-sm-11 scrollable">
+            <table class='table'>
+                <thead>
+                    <tr ng-class='$ctrl.class'>
+                        <th ng-repeat = '(key,value) in $ctrl.data()[0]'> {{key}} </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr calss = 'row' ng-repeat = 'register in $ctrl.data() | limitTo: 300'>
+                        <td ng-repeat = '(key,value) in register'>
+                            <span ng-if="$ctrl.isArray(value)">
+                                <p ng-repeat="x in value | limitTo:2">{{x}}</p>
+                                <a ng-if="value.length > 2">
+                                    {{value.length - 2}} {{key}} mas.
+                                </a>
+                            </span> 
+                            <span ng-if="!$ctrl.isArray(value)">
+                                <p>{{value}}</p>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-1">
+            <button class="btn btn-primary" ng-click="$ctrl.download()">
+                <span class="glyphicon">&#xe025;</span>
+            </button>
+        </div>
+    </div>
+</div>
+

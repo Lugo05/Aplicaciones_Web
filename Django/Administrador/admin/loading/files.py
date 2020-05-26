@@ -8,6 +8,36 @@ class Column:
         self.validators = validators
 
 class File:
+
+    @staticmethod
+    def upload_file(file):
+        with open('static/files/archivo.xlsx', 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+
+    @staticmethod
+    def _get_files():
+        files = {
+            "users": {
+                "headers": File.get_headers(User),
+                "file": User
+            },
+            "stock": {
+                "headers": File.get_headers(Stock),
+                "file": Stock
+            }
+        }
+        return files;
+
+    @staticmethod
+    def detect_file(headers):
+        files = File._get_files();
+        for name_file, data in files.items():
+            match_columns = list( filter( lambda x : x.lower() in data["headers"] , headers ))
+            if len(match_columns) == len(data["headers"]):
+                return data["file"]
+        return None
+
     @staticmethod
     def validate_type(RefClass, data, data_invalid):
         for column in RefClass.list_columns:
@@ -65,6 +95,23 @@ class File:
        data_invalid = File.validate_type(RefClass, data, data_invalid);
        data_invalid = File.apply_validators(RefClass, data, data_invalid);
        return data_invalid;
+
+    @staticmethod
+    def split_file(df,data_invalid):
+        data = {"correct":[],"invalid":[]}
+        offset = 2;
+        for i in range(len(df)):
+            row = {}
+            row["#"] = i + offset;
+            if i in data_invalid:
+                row["ERRORES"] = data_invalid[i];
+            for header in df.columns:
+                row[header] = df.loc[i,header] if not Validator.is_null(df.loc[i,header]) else None
+            if i in data_invalid:
+                data["invalid"].append(row)
+            else:
+                data["correct"].append(row)
+        return data;
        
             
 class User:
@@ -100,26 +147,4 @@ class Stock:
     def validate(data):
         File.validate(Stock,data);
     
-
-
-def _get_files():
-    files = {
-        "users": {
-            "headers": File.get_headers(User),
-            "file": User
-        },
-        "stock": {
-            "headers": File.get_headers(Stock),
-            "file": Stock
-        }
-    }
-    return files;
-
-def detect_file(headers):
-    files = _get_files();
-    for name_file, data in files.items():
-        match_columns = list( filter( lambda x : x.lower() in data["headers"] , headers ))
-        if len(match_columns) == len(data["headers"]):
-            return data["file"]
-    return None
         

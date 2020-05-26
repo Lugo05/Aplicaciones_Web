@@ -35,7 +35,7 @@ class ValidatorDB:
 
         for permission in permissions:
             for privilege in privileges:
-                self.permissions[permission.name.upper() + "_" + privilege.name.upper()]
+                self.permissions[permission.name.upper() + "_" + privilege.name.upper()]=True
         self.permissions = {"ALL_ALL":True, "USERS_ALL":True, "USERS_VIEW":True}
 
     def set_profiles(self):

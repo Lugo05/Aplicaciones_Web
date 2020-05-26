@@ -1,58 +1,77 @@
-export function serviceMassive ($http)
+export function serviceMassive ($http,$scope)
 {
-    this.data = {
-        "correct":{
-            "headers":["Usuario","Clave"],
-            "data":[{"usuario":"usuario1","clave":"clave1"}]
-        }, 
-        "invalid":{
-            "headers":["Usuario","Clave"],
-            "data":[{"usuario":"usuario2","clave":"clave2"}]
-        }
-    }
-    this.formatError = false
-    this.urlValidate = "/loading/validate/"
+    var service = this
 
-    this.validateData = function (file)
+    service.URL_VALIDATE = "/loading/validate/"
+
+    service.data = {"correct":[],  "invalid":[]}
+    service.formatError = false
+    service.fileName = ""
+
+    service.validateData = function (file)
     {
         var fd = new FormData();
         fd.append('file', file);
 
-        var call = $http.post(this.urlValidate, fd, {
+        var call = $http.post(service.URL_VALIDATE, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         });
-        call.success(this.setData)
+        call.success(service.setData)
+        call.error(function (data,status,headers,config) {
+            console.log(data)
+            console.log(status)
+            console.log(headers)
+            console.log(config)
+        })
     };
 
-    this.isFormatError = function()
+    service.getData = function (type)
     {
-        console.log("Service")
-        console.log(window.location.pathname);
-        return this.formatError;
-    }
-
-    this.getData = function (type)
-    {
-        return this.data[type];
+        return service.data[type];
     };
 
-    this.sendCorrectData = function()
-    {
-        return 1;
-    };
-
-    this.setData = function(response)
+    service.setData = function(response)
     {
         if(response.error)
         {
-            this.formatError= true;
-            this.data = {"correct":null, "invalid":null};
+            service.formatError= true;
+            service.data = {"correct":[], "invalid":[]};
         }
         else
         {
-            this.formatError = false;
-            this.data = response.data;
+            service.formatError = false;
+            service.data = response.data;
         }
     };
+
+    service.isFormatError = function()
+    {
+        return service.formatError;
+    }
+
+    service.setFileName = function(fileName)
+    {
+        service.fileName = fileName;
+    }
+
+    service.getFileName = function()
+    {
+        return service.fileName;
+    }
+
+    service.reset = function()
+    {
+        service.data = {"correct":[],  "invalid":[]}
+        service.formatError = false
+        service.fileName = ""
+    }
+
+    service.download = function(type)
+    {
+        var fileName = service.fileName.replace(".xlsx","") + "_" + type + ".xlsx";
+        var stringData = JSON.stringify(service.data[type]).replace(/null/g, '""')
+        var dataToExport = JSON.parse(stringData);
+        alasql('SELECT * INTO XLSX("'+fileName+'",{headers:true}) FROM ?',[dataToExport]);
+    }
 }
